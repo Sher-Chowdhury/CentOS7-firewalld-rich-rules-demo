@@ -49,7 +49,7 @@ Vagrant.configure(2) do |config|
     end
 
     webserver_config.vm.provision "shell", path: "scripts/install-rpms.sh", privileged: true
-    webserver_config.vm.provision "shell", path: "scripts/webserver-rpms.sh", privileged: true
+    webserver_config.vm.provision "shell", path: "scripts/webserver-setup.sh", privileged: true
     webserver_config.vm.provision "shell", path: "scripts/install-gnome-gui.sh", privileged: true
     webserver_config.vm.provision :reload
   end
