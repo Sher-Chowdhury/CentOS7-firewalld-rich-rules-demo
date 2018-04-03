@@ -39,7 +39,7 @@ Vagrant.configure(2) do |config|
   config.vm.define "webserver" do |webserver_config|
     webserver_config.vm.box = "bento/centos-7.4"
     webserver_config.vm.hostname = "webserver.local"
-    webserver_config.vm.network "private_network", ip: "10.0.0.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
+    webserver_config.vm.network "private_network", ip: "10.0.50.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
     webserver_config.vm.provider "virtualbox" do |vb|
       vb.gui = true
@@ -53,6 +53,10 @@ Vagrant.configure(2) do |config|
     webserver_config.vm.provision "shell", path: "scripts/install-gnome-gui.sh", privileged: true
     webserver_config.vm.provision :reload
   end
-
+  
+  config.vm.provision :hosts do |provisioner|
+    provisioner.add_host '10.0.50.10', ['client.local']
+    provisioner.add_host '10.0.50.11', ['webserver.local']
+  end
 
 end
