@@ -19,13 +19,13 @@ end
 
 Vagrant.configure(2) do |config|
   config.vm.define "client" do |client_config|
-    client_config.vm.box = "bento/centos-7.4"
+    client_config.vm.box = "bento/centos-7.5"
     client_config.vm.hostname = "client.local"
     # https://www.vagrantup.com/docs/virtualbox/networking.html
     client_config.vm.network "private_network", ip: "10.0.50.10", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
     client_config.vm.provider "virtualbox" do |vb|
-      vb.gui = false 
+      vb.gui = true 
       vb.memory = "1024"
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "webserver" do |webserver_config|
-    webserver_config.vm.box = "bento/centos-7.4"
+    webserver_config.vm.box = "bento/centos-7.5"
     webserver_config.vm.hostname = "webserver.local"
     webserver_config.vm.network "private_network", ip: "10.0.50.11", :netmask => "255.255.255.0", virtualbox__intnet: "intnet2"
 
