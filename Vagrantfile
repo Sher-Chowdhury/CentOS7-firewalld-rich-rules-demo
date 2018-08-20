@@ -5,9 +5,9 @@
 # http://stackoverflow.com/questions/19492738/demand-a-vagrant-plugin-within-the-vagrantfile
 # not using 'vagrant-vbguest' vagrant plugin because now using bento images which has vbguestadditions preinstalled.
 required_plugins = ['vagrant-hosts', 'vagrant-share', 'vagrant-vbox-snapshot', 'vagrant-host-shell', 'vagrant-reload']
-#for required_plugins.each do |plugin|
+for required_plugins.each do |plugin|
 #  puts "#{plugin}"
-#end 
+end
 #if not plugins_to_install.empty?
 #  puts "Installing plugins: #{plugins_to_install.join(' ')}"
 #if system "vagrant plugin install #{plugins_to_install.join(' ')}"
